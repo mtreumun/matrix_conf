@@ -32,7 +32,7 @@ df.input %>%
     dplyr::filter(Tipo_Grupo=="Abierto") %>%
     group_split(SUBGRUPO_E) -> split
     class(split)
-n_split <- which(sapply(split, nrow) >4)
+n_split <- which(sapply(split, nrow) >=4)
 split<-split[n_split]
 length(split)
 
@@ -55,6 +55,9 @@ for (i in 1:length(split)) {
     mutate(GrupoMatrix = sample(GrupoMatrix))
     table(grouped[[i]]$GrupoMatrix)->check[[i]]
 }
+
+#chequear numeros
+check[[10]]
 
 bind_rows(grouped)->grouped
 

@@ -79,5 +79,3 @@ for (i in seq_along(grouped)) {
     filename = paste("Grupo",i,".csv")
     write.csv(grouped[[i]], filename)
 }
-
-##chch

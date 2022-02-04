@@ -37,7 +37,17 @@ split<-split[n_split]
 length(split)
 
 # vector con grupos
-grupos <- c("Grupo1", "Grupo2", "Grupo3", "Grupo4")
+#grupos <- c("Grupo1", "Grupo2", "Grupo3", "Grupo4")
+
+n_grupos<-3
+
+grupos<-as.character(c())
+class(grupos)
+#grupos es un vector
+
+for (i in 1:n_grupos) {
+    paste0("Grupo", i)->grupos[i]
+}
 
 add.col<-function(df, new.col) {n.row<-dim(df)[1]
 length(new.col)<-n.row
@@ -49,7 +59,7 @@ cbind(df, new.col)
 list(c())-> grouped
 list(c())->check
 for (i in 1:length(split)) {    
-    GrupoMatrix <- rep(grupos, ceiling(nrow(split[[i]])/4))
+    GrupoMatrix <- rep(grupos, ceiling(nrow(split[[i]])/length(grupos)))
     grouped[[i]] <- add.col(split[[i]], GrupoMatrix) %>% 
     rename(GrupoMatrix = new.col) %>% 
     mutate(GrupoMatrix = sample(GrupoMatrix))
